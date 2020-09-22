@@ -3,8 +3,6 @@ const Broker = require('rascal').BrokerAsPromised;
 const config = require('./config.json');
 
 var assert = require('assert');
-var util = require('util');
-
 
 var rabbit_user= process.env.RABBITMQ_USER;
 var rabbit_pwd = process.env.RABBITMQ_PWD;
@@ -17,7 +15,7 @@ assert(rabbit_host);
 assert(rabbit_port);
 assert(vhost);
 
-var amql_url = util.format("amqp://%s:%s@%s:%s/%s", rabbit_user, rabbit_pwd, rabbit_host, rabbit_port, vhost);
+var amql_url = `amqp://${rabbit_user}:${rabbit_pwd}@${rabbit_host}:${rabbit_port}/${vhost}`
 
 async function rascal_produce(){
     console.log("Publishing");
